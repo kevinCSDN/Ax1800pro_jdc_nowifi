@@ -136,6 +136,7 @@ jobs:
 
 
 
+
     - name: Openwrt AutoUpdate
       run: |
         TEMP=$(date +"OpenWrt_%Y%m%d_%H%M%S_")$(git rev-parse --short HEAD)
@@ -157,6 +158,11 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         #cat package/lean/default-settings/files/zzz-default-settings
+        cd package/small
+        rm -rf v2ray-geodata
+        rm -rf v2ray-geoview
+        cd ..
+        cd ..
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
